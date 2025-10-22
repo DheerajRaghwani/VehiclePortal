@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<img src="left-logo.png" alt="Left Logo" class="corner-img left-img">
+  <img src="right-logo.png" alt="Right Logo" class="corner-img right-img">
+   <header class="dashboard-header">
+    <h1>Dashboard</h1>
+	  
+    <button id="logoutBtn">Logout</button>
+	
+</header>
+	 <!-- Vehicle Dashboard Top Cards -->
+<div class="dashboard-cards" id="vehicleTopCards">
+    <div class="card">
+        <h3> Village Departure Total People</h3>
+        <p id="foodOverallPeople">0</p>
+    </div>
+    <div class="card">
+        <h3>Checkpost Crossed Total People</h3>
+        <p id="checkpostOverallPeople">0</p>
+    </div>
+    <div class="card">
+        <h3>Vehicle Overall Capacity</h3>
+        <p id="vehicleOverallCapacity">0</p>
+    </div>
+    <div class="card">
+        <h3>Total Buses</h3>
+        <p id="totalBusesCard">0</p>
+    </div>
+    <div class="card">
+        <h3>Total Small Vehicles</h3>
+        <p id="totalSmallVehiclesCard">0</p>
+    </div>
+	
+</div>
+
+
+    <main>
+        <!-- Vehicle Dashboard -->
+		 <section class="dashboard-section">
+            <h2>Vehicle Registion Dashboard</h2>
+             
+			
+             <table id="vehicleDashboardTable">
+        <thead>
+          <tr>
+            <th>District Name</th>
+            <th>Block Name</th>
+            <th>No. of Buses</th>
+            <th>Total Bus Capacity</th>
+            <th>No. of Small Vehicles</th>
+            <th>Total Small Vehicle Capacity</th>
+			 
+            <th>Total Capacity per Block</th>
+          </tr>
+        </thead>
+        <tbody id="vehicleDashboardBody">
+          <!-- Data dynamically loaded here -->
+        </tbody>
+      </table>
+        </section>
+       
+  
+        <!-- Food Status / District Dashboard -->
+        <section class="dashboard-section">
+            <h2>Village Departure Dashboard</h2>
+             
+            <table id="foodDashboardTable">
+		<thead>
+			<tr>
+				<th>District</th>
+				<th>Block</th>
+				<th>No. of Buses</th>
+				<th>Total People in Buses</th>
+				<th>No. of Small Vehicles</th>
+				<th>Total People in Small Vehicles</th>
+				 
+				<th>Total People in Block</th>
+			</tr>
+			</thead>
+			<tbody id="foodDashboardBody"></tbody>
+		</table>
+
+        </section>
+		
+		      <!-- Checkpost Dashboard -->
+        <section class="dashboard-section">
+            <h2>Checkpost Crossing Status Dashboard</h2>
+          
+				<table>
+					<thead>
+							<tr>
+								<th>District</th>
+								<th>Block</th>
+								<th>No of Buses</th>
+								<th>Total People in Buses</th>
+								<th>No of Small Vehicles</th>
+								<th>Total People in Small Vehicles</th>
+							 
+								<th>Total People in Block</th>
+							</tr>
+					</thead>
+					<tbody id="checkpostDashboardBody"></tbody>
+				</table>
+                 
+        </section>
+
+
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

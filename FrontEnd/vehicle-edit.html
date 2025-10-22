@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Vehicle</title>
+  <link rel="stylesheet" href="vehicle-edit.css">
+</head>
+<body>
+  <!-- Corner Logos -->
+  <img src="left-logo.png" alt="Left Logo" class="corner-img left-img">
+  <img src="right-logo.png" alt="Right Logo" class="corner-img right-img">
+
+  <div class="container">
+    <!-- Back Button -->
+    <button id="backBtn" class="back-btn">← Back</button>
+
+    <h1>Edit Vehicle</h1>
+    <div id="districtDisplay" class="district-display"></div>
+
+    <form id="editVehicleForm">
+      <label for="VehicleNo">Vehicle No:</label>
+      <input type="text" id="VehicleNo" readonly />
+
+      <div class="form-group">
+        <label for="VehicleType">Vehicle Type</label>
+        <select id="VehicleType" required>
+          <option value="">Select vehicle type</option>
+          <option value="BUS">BUS</option>
+          <option value="Small Vehicle">Small Vehicle</option>
+        </select>
+      </div>
+
+      <label for="SeatCapacity">Seat Capacity:</label>
+      <input type="number" id="SeatCapacity" required />
+
+      <label for="DriverName">Driver Name:</label>
+      <input type="text" id="DriverName" required />
+
+      <label for="DriverMobileNo">Driver Mobile No:</label>
+      <input type="text" id="DriverMobileNo" required />
+
+      <label for="VehicleNodalName">Vehicle Nodal Name:</label>
+      <input type="text" id="VehicleNodalName" required />
+
+      <label for="NodalMobileNo">Nodal Mobile No:</label>
+      <input type="text" id="NodalMobileNo" required />
+
+      <div class="form-group">
+        <label for="BlockDropdown">Block:</label>
+        <div class="block-group">
+          <select id="BlockDropdown" required>
+            <option value="">Select Block</option>
+          </select>
+        </div>
+      </div>
+
+      <label for="Gpname">GP Name:</label>
+      <input type="text" id="Gpname" />
+
+      <label for="Remark">Remark:</label>
+      <input type="text" id="Remark" />
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <button type="button" id="updateBtn" class="update-btn">Update</button>
+        <button type="button" id="deleteBtn" class="delete-btn">Delete</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="vehicle-edit.js"></script>
+</body>
+</html>

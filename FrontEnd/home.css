@@ -1,0 +1,119 @@
+/* Background Gradient */
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #F2F2F2, #EAE4D5, #B6B09F);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Gradient Animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Corner Images */
+.corner-img {
+    position: absolute;
+    width: 120px;
+    max-width: 25%;
+    height: auto;
+    opacity: 0.9;
+    top: 20px;
+}
+
+.left-img { left: 20px; }
+.right-img { right: 20px; }
+
+/* Main Container */
+.container {
+    background-color: #EAE4D5;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    z-index: 1;
+    position: relative; /* required for absolute logout button */
+}
+
+/* Heading */
+h1 {
+    font-size: 28px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Logout Button (Top-Left inside container) */
+.logout-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #000;
+    color: #F2F2F2;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: auto;
+}
+
+.logout-btn:hover {
+    background-color: #B6B09F;
+    color: #000;
+}
+
+/* Page Buttons */
+.buttons button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: #F2F2F2;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #B6B09F;
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px 20px;
+    }
+
+    h1 { font-size: 24px; }
+
+    .corner-img { width: 100px; }
+    .buttons button, .logout-btn { font-size: 14px; padding: 10px; }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    h1 { font-size: 22px; }
+    .corner-img { width: 80px; }
+    .buttons button, .logout-btn { font-size: 13px; padding: 8px; }
+}

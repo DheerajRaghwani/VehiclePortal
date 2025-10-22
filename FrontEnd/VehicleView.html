@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Registration List</title>
+  <link rel="stylesheet" href="VehicleView.css">
+</head>
+<body>
+ <img src="left-logo.png" alt="Left Image" class="corner-img left-img">
+    <img src="right-logo.png" alt="Right Image" class="corner-img right-img">
+  <div class="container">
+    <h1>Vehicle Registration Portal</h1>
+    <h2 id="districtDisplay"></h2>
+	 <!-- Search -->
+    <div class="search-container">
+	<!-- Back Button -->
+    <div class="top-controls">
+      <button id="backBtn" class="back-btn">⬅ Back</button>
+    </div>
+      <input type="text" id="searchInput" placeholder="Enter Vehicle No" />
+      <button id="searchBtn">Search</button>
+      <button id="resetBtn">Reset</button>
+	 <button id="exportExcelBtn" class="export-btn">📊 Export</button>
+    </div>
+    
+
+    <table id="vehicleTable">
+      <thead>
+        <tr>
+          <th>Vehicle No</th>
+          <th>Type</th>
+          <th>Seat Capacity</th>
+          <th>Driver Name</th>
+          <th>Driver Mobile</th>
+          <th>Nodal Name</th>
+          <th>Nodal Mobile</th>
+          <th>District</th>
+           <th>
+  Block Name
+  <select id="blockHeaderDropdown">
+    <option value="">All Blocks</option>
+  </select>
+</th>
+
+          <th>GP Name</th>
+          <th>Remark</th>
+		  
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+ 
+  <script src="VehicleView.js"></script>
+   
+</body>
+</html>

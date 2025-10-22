@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Source Management</title>
+<link rel="stylesheet" href="source.css">
+</head>
+<body>
+ <img src="left-logo.png" alt="Left Logo" class="corner-img left-img">
+  <img src="right-logo.png" alt="Right Logo" class="corner-img right-img">
+
+<h2>Village Depeature Management</h2>
+
+<!-- Search Section -->
+<div class="search-section">
+    <input type="text" id="vehicleNoInput" placeholder="Enter Vehicle No">
+    <select id="districtSelect">
+        <option value="">Select District</option>
+    </select>
+    <select id="blockSelect">
+        <option value="">Select Block</option>
+    </select>
+</div>
+
+<!-- Action Buttons -->
+<div class="action-buttons">
+    <button id="resetBtn">Reset</button>
+    <button id="logoutBtn">Logout</button>
+    <button id="sourceVehicleBtn" class="btn btn-warning">Village Departure Records</button>
+</div>
+<div id="vehicleCounts" style="display: flex; gap: 20px; margin: 10px 0; font-weight: 600;">
+  <span>Total Vehicles: <span id="totalVehicles">0</span></span>
+   
+</div>
+
+<!-- Vehicle Table -->
+<table id="vehicleTable">
+    <thead>
+        <tr>
+            <th>Vehicle No</th>
+            <th>District</th>
+            <th>Block</th>
+            <th>Type</th>
+            <th>Capacity</th>
+			<th>Nodal Name</th>
+			<th>Mobile No</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!-- Add Source Modal -->
+<div id="sourceModal" class="modal">
+    <div class="modal-content">
+        <h3>Village Departure</h3>
+        <div>
+            <label>Vehicle No:</label>
+            <span id="modalVehicleNo"></span>
+        </div>
+
+        <div>
+            <label>Total People:</label>
+            <input type="number" id="totalPeople" min="1" value="1">
+        </div>
+
+       <div>
+		<label>Pass:</label>
+		<input type="text" value="Yes" disabled class="readonly-field" />
+		<input type="hidden" id="passOption" value="true" />
+	</div>
+
+        <div style="margin-top:15px;">
+            <button id="addSourceBtn" class="submit-btn">Submit</button>
+            <button id="cancelSourceBtn" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Source Records Modal -->
+<div id="sourceListModal" class="modal">
+  <div class="modal-content">
+    <span id="closeSourceListModal" class="close">&times;</span>
+    <h2>Source Records List</h2>
+	 <input type="text" id="searchPassedVehicles" placeholder="Search by Vehicle No" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+	<div id="vehicleCounts" style="display: flex; gap: 20px; margin: 10px 0; font-weight: 600;">
+	<span>Passed Vehicles: <span id="passedVehicles">0</span></span>
+	 </div>
+    <table id="sourceListTable">
+      <thead>
+        <tr>
+          <th>Vehicle No</th>
+          <th>Pass</th>
+          <th>Total People</th>
+		  <th>Nodal Name</th>
+		  <th>Mobile No</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+	<div style="text-align: right; margin-top: 15px;">
+        <button id="cancelSourceListBtn" class="cancel-btn">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="source.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodstatus Portal</title>
+  <link rel="stylesheet" href="foodstatus.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Foodstatus Portal</h1>
+    
+    <!-- Home Buttons -->
+    <div class="home-buttons">
+      <button id="sourcePassEntryBtn">Source Pass Entry</button>
+      <button id="viewEntryBtn">View Entry</button>
+      <button id="pendingListBtn">Pending Vehicles</button>
+      <button id="logoutBtn">Logout</button>
+    </div>
+
+    <!-- Search & Table Section -->
+    <div id="tableSection" class="hidden">
+      <div class="filters">
+        <input type="text" id="vehicleNoInput" placeholder="Search by Vehicle No">
+        <select id="districtDropdown">
+          <option value="">Select District</option>
+        </select>
+        <select id="blockDropdown">
+          <option value="">Select Block</option>
+        </select>
+        <button id="searchBtn">Search</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+
+      <table id="foodstatusTable">
+        <thead>
+          <tr>
+            <th>Vehicle No</th>
+            <th>Vehicle Type</th>
+            <th>Driver Name</th>
+            <th>Seat Capacity</th>
+            <th>District</th>
+            <th>Block</th>
+            <th>Pass</th>
+            <th>Total People</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Edit Foodstatus</h2>
+      <form id="editForm">
+        <label>Pass:</label>
+        <select id="passInput" required>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+        <label>Total People:</label>
+        <input type="number" id="totalPeopleInput" required min="0">
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="foodstatus.js"></script>
+</body>
+</html>

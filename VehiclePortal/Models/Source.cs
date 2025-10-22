@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace VehiclePortal.Models;
+
+public partial class Source
+{
+    public Guid Id { get; set; }
+
+    public string? VehicleNo { get; set; }
+
+    public int? DistrictId { get; set; }
+
+    public int? BlockId { get; set; }
+
+    public bool? Pass { get; set; }
+
+    public int? TotalPeople { get; set; }
+
+    public DateTime? CurrentDate { get; set; }
+
+    public virtual Vehicleregistration? VehicleNoNavigation { get; set; }
+}

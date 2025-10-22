@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkpost Management</title>
+    <link rel="stylesheet" href="checkpost.css">
+</head>
+<body>
+
+<!-- Corner Logos -->
+<img src="left-logo.png" alt="Left Logo" class="corner-img left-img">
+<img src="right-logo.png" alt="Right Logo" class="corner-img right-img">
+
+<h2>Vehicle Checkpost Management</h2>
+
+<!-- Search Section -->
+<div class="search-section">
+    <input type="text" id="vehicleNoInput" placeholder="Enter Vehicle No">
+    <select id="districtSelect">
+        <option value="">Select District</option>
+    </select>
+    <select id="blockSelect">
+        <option value="">Select Block</option>
+    </select>
+    <button id="searchBtn">Search Vehicle</button>
+</div>
+
+<!-- Action Buttons -->
+<div class="action-buttons">
+    <button id="resetBtn">Reset</button>
+    <button id="logoutBtn">Logout</button>
+    <button id="passedVehicleBtn" class="btn btn-warning">Vehicle Crossed</button>
+</div>
+
+<!-- Vehicle Counts -->
+<div id="vehicleCounts" style="display: flex; gap: 20px; margin: 10px 0; font-weight: 600;">
+    <span>Total Vehicles: <span id="totalVehicles">0</span></span>
+ 
+ 
+</div>
+
+<!-- Vehicle Table -->
+<table id="vehicleTable">
+    <thead>
+        <tr>
+            <th>Vehicle No</th>
+            <th>District</th>
+            <th>Block</th>
+            <th>Type</th>
+            <th>Capacity</th>
+			<th>Nodal Name</th>
+			<th>Mobile No</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<div id="allEntries"></div>
+
+<!-- Pass Modal -->
+<div id="passModal" class="modal">
+  <div class="modal-content">
+    <span id="closePassModal" class="modal-close">&times;</span>
+    <h3>Checkpost Crossing</h3>
+
+    <div>
+        <label>Vehicle No:</label>
+        <span id="modalVehicleNo"></span>
+    </div>
+
+    <div>
+        <label>Checkpost:</label>
+        <select id="checkpostSelect">
+            <option value="">Select Checkpost</option>
+        </select>
+        <button id="addCheckpostBtn" type="button">Add Checkpost</button>
+    </div>
+
+    <div id="newCheckpostDiv" style="display:none; margin-top:5px;">
+        <input type="text" id="newCheckpostInput" placeholder="Enter new checkpost name">
+        <button id="saveCheckpostBtn" type="button">Save</button>
+    </div>
+
+    <div>
+        <label>Total People:</label>
+        <input type="number" id="totalPeople" min="1" value="1">
+    </div>
+
+	<div>
+		<label>Pass:</label>
+		<input type="text" value="Yes" disabled class="readonly-field" />
+		<input type="hidden" id="passOption" value="true" />
+	</div>
+
+
+	<div>
+		<label>Date:</label>
+		<input type="text" id="passDate" class="readonly-field" disabled />
+	</div>
+	
+
+    <div class="modal-buttons">
+        <button id="addPassBtn" class="submit-btn" type="button">Submit</button>
+        <button id="cancelPassBtn" class="cancel-btn" type="button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Passed List Modal -->
+ <!-- Passed List Modal -->
+<div id="passedListModal" class="modal">
+  <div class="modal-content">
+    <span id="closePassedListModal" class="modal-close">&times;</span>
+    <h2>Checkpost Crossed Vehicle List</h2>
+
+    <!-- Search bar -->
+    <input type="text" id="searchPassedVehicles" placeholder="Search by Vehicle No" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+    <div id="modalVehicleCounts" style="display: flex; gap: 20px; margin: 10px 0; font-weight: 600;">
+        <span>Passed Vehicles: <span id="passedVehiclesModal">0</span></span>
+    </div>
+
+    <table id="passedListTable">
+      <thead>
+        <tr>
+          <th>Vehicle No</th>
+          <th>Checkpost Name</th>
+          <th>Pass</th>
+          <th>Total People</th>
+          <th>Nodal Name</th>
+          <th>Mobile No</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="modal-buttons" style="justify-content: center; margin-top: 15px;">
+      <button id="cancelPassedListBtn" class="cancel-btn" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="checkpost.js"></script>
+</body>
+</html>

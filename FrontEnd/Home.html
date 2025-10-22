@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Corner Images -->
+    <img src="left-logo.png" alt="Left Image" class="corner-img left-img">
+    <img src="right-logo.png" alt="Right Image" class="corner-img right-img">
+
+    <div class="container">
+        <h1>Vehicle Portal</h1>
+        
+        <!-- Logout Button -->
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+
+        <div class="buttons">
+            <!-- Open Register Vehicle Page -->
+            <button onclick="window.open('VehicleRegister.html', '_blank')">
+                Register Vehicle
+            </button>
+
+            <!-- Open View All Vehicles Page -->
+            <button onclick="window.open('VehicleView.html', '_blank')">
+                View Registered Vehicles
+            </button>
+			 <button onclick="window.open('Dashboard.html', '_blank')">
+                View Registered Vehicles
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Logout: Clear token and redirect to login page
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("district");
+            localStorage.removeItem("role");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District Dashboard</title>
+    <link rel="stylesheet" href="districtDashboard.css">
+</head>
+<body>
+    <header>
+        <h1>District Dashboard</h1>
+        <button id="logoutBtn">Logout</button>
+    </header>
+
+    <section class="summary">
+        <div>
+            <h3>Overall People</h3>
+            <p id="overallPeople">0</p>
+        </div>
+    </section>
+
+    <section class="table-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>No. of Buses</th>
+                    <th>Total People in Buses</th>
+                    <th>No. of Small Vehicles</th>
+                    <th>Total People Small Vehicles</th>
+                    <th>Total People (District)</th>
+                </tr>
+            </thead>
+            <tbody id="dashboardBody">
+                <!-- Dashboard rows will be inserted here -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="districtDashboard.js"></script>
+</body>
+</html>

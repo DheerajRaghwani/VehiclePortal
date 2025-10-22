@@ -1,0 +1,177 @@
+/* Background Gradient using the new palette */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #F2F2F2, #EAE4D5, #B6B09F);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Gradient movement animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Corner images */
+.corner-img {
+  position: absolute;
+  width: 120px;
+  max-width: 25%;
+  height: auto;
+  opacity: 0.9;
+  top: 20px;
+}
+
+.left-img { left: 20px; }
+.right-img { right: 20px; }
+
+/* Container */
+.container {
+  background-color: #EAE4D5;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  color: #000;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+/* District display */
+.district-display {
+  text-align: center;
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* Form fields */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #B6B09F;
+  border-radius: 8px;
+  background-color: #F2F2F2;
+  outline: none;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  border-color: #000;
+  background-color: #ffffff;
+}
+
+/* Block + add button layout */
+.block-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#AddBlockBtn {
+  flex: 1 1 auto;
+  background-color: #B6B09F;
+  color: #000;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+#AddBlockBtn:hover {
+  background-color: #000;
+  color: #F2F2F2;
+}
+
+/* Buttons */
+.submit-btn {
+  background-color: #000;
+  color: #F2F2F2;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #B6B09F;
+  color: #000;
+}
+
+.back-btn {
+  background-color: #000;
+  color: #F2F2F2;
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: block;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+	background-color: #B6B09F;
+  color: #000;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  h1 { font-size: 24px; }
+
+  input, select, #AddBlockBtn, .submit-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .corner-img { width: 100px; }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 18px 12px;
+  }
+
+  h1 { font-size: 22px; }
+
+  input, select, #AddBlockBtn, .submit-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .corner-img { width: 80px; }
+}

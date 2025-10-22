@@ -1,0 +1,270 @@
+ 
+/* Fade In Animation */
+/* ------------------- GLOBAL STYLES ------------------- */
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #F2F2F2, #EAE4D5, #B6B09F);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ------------------- CORNER IMAGES ------------------- */
+.corner-img {
+    position: absolute;
+    width: 120px; /* default size */
+    height: auto;
+    opacity: 0.9;
+    top: 20px;
+    z-index: 10;
+}
+.left-img { left: 20px; }
+.right-img { right: 20px; }
+
+/* Maintain decent size on smaller screens */
+@media (max-width: 1024px) {
+    .corner-img { width: 100px; }
+}
+@media (max-width: 768px) {
+    .corner-img { width: 90px; }
+}
+@media (max-width: 480px) {
+    .corner-img { width: 80px; }
+}
+
+/* ------------------- CONTAINER ------------------- */
+.scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.container {
+    background-color: #EAE4D5;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+/* Columns inside container */
+.container-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual column */
+.column {
+    flex: 0 0 auto;
+    min-width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+/* Back Button */
+.back-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #000;
+    color: #F2F2F2;
+    font-size: 16px;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+.back-btn:hover {
+    background-color: #B6B09F;
+    color: #000;
+}
+
+/* Headings */
+h1 { font-size: 26px; color: #000; margin-bottom: 20px; }
+#districtDisplay { font-weight: 600; margin-bottom: 20px; font-size: 16px; color: #000; }
+
+/* Search Inputs */
+.search-container {
+    margin-bottom: 20px;
+}
+.search-container input {
+    padding: 8px 10px;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    border: 2px solid #B6B09F;
+    background-color: #F2F2F2;
+    outline: none;
+    margin-right: 5px;
+}
+.search-container button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #000;
+    color: #F2F2F2;
+    transition: background 0.3s, color 0.3s;
+}
+.search-container button:hover { background-color: #B6B09F; color: #000; }
+
+/* Table wrapper inside column */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+/* Table */
+/* ================= TABLE STYLES ================= */
+.table-container {
+  max-height: 70vh;              /* limit table height */
+  overflow-y: auto;              /* enable vertical scroll */
+  overflow-x: auto;              /* horizontal scroll if needed */
+  border-radius: 10px;
+  background: #ffffffcc;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin-top: 15px;
+}
+
+/* Main table */
+table {
+  width: 100%;
+  min-width: 700px;              /* avoid column squeezing */
+  border-collapse: collapse;
+  background: transparent;
+}
+
+/* Header and cell styles */
+th, td {
+  border: 1px solid #B6B09F;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Sticky header */
+th {
+  background-color: #B6B09F;
+  color: #000;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+  background-color: rgba(182, 176, 159, 0.25);
+  transition: 0.2s;
+}
+
+/* Responsive optimization */
+@media (max-width: 600px) {
+  th, td {
+    font-size: 12px;
+    padding: 6px;
+  }
+  table {
+    min-width: 500px;
+  }
+}
+
+
+/* Buttons */
+.edit-btn {
+    background-color: #000;
+    color: #F2F2F2;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: 0.3s;
+}
+.edit-btn:hover { background-color: #B6B09F; color: #000; }
+
+.export-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    margin-left: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+.export-btn:hover { background-color: #218838; }
+
+.highlight-cell {
+    background-color: #B6B09F;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Hover for table rows */
+tbody tr:hover {
+    background-color: #F2F2F2;
+    transition: 0.3s;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+@media (max-width: 1024px) {
+    .container { padding: 25px 20px; max-width: 100%; }
+    h1 { font-size: 24px; }
+    input, select, button, .edit-btn { font-size: 14px; padding: 6px 8px; }
+    th, td { font-size: 14px; padding: 8px 10px; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 20px 15px; }
+    h1 { font-size: 22px; }
+    th, td { padding: 7px 8px; font-size: 13px; }
+    input, select, button, .edit-btn { font-size: 13px; padding: 5px 6px; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 15px 10px; }
+    h1 { font-size: 20px; }
+    th, td { padding: 6px 4px; font-size: 12px; }
+    input, select, button, .edit-btn { font-size: 12px; padding: 4px 5px; }
+    .container-columns { gap: 10px; }
+}
