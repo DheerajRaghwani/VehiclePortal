@@ -71,9 +71,10 @@ body {
 
 /* ================= TABLE STYLES ================= */
 .table-container {
-  max-height: 70vh;              /* limit table height */
-  overflow-y: auto;              /* enable vertical scroll */
-  overflow-x: auto;              /* horizontal scroll if needed */
+  width: 100%;
+  overflow-x: auto;      /* ✅ enable horizontal scroll */
+  overflow-y: auto;
+  display: block;        /* ✅ ensures scroll works properly */
   border-radius: 10px;
   background: #ffffffcc;
   backdrop-filter: blur(5px);
@@ -83,8 +84,8 @@ body {
 
 /* Main table */
 table {
-  width: 100%;
-  min-width: 700px;              /* avoid column squeezing */
+  width: max-content;    /* ✅ ensures table expands to its full width */
+  min-width: 700px;
   border-collapse: collapse;
   background: transparent;
 }
@@ -121,6 +122,10 @@ tbody tr:hover {
   table {
     min-width: 500px;
   }
+}
+@media (max-width: 320px) {
+  table { min-width: 260px; font-size: 10px; }
+  th, td { padding: 3px; }
 }
 
 
