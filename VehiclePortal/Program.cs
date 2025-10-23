@@ -17,7 +17,7 @@ var key = builder.Configuration["Jwt:Key"] ?? "MySuperSecretKeyForJWT12345678901
 // ✅ DbContext
 var conn = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<VehicleContext>(o =>
-    o.UseMySql(conn, ServerVersion.AutoDetect(conn))
+    o.UseMySql(conn, ServerVersion.Create(8, 0, 0, Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql))
 );
 
 // ✅ Services

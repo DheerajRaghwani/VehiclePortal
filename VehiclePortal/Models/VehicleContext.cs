@@ -35,8 +35,18 @@ public partial class VehicleContext : DbContext
     public virtual DbSet<Vehicleregistration> Vehicleregistrations { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;user=root;password=1111;database=Vehicle;port=3306", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.17-mysql"));
+    {
+        // Connection string is configured in Program.cs via dependency injection
+        // This method should not be called in normal operation since we configure it in Program.cs
+        // If it is called, it means the DbContext was created without proper DI configuration
+        if (!optionsBuilder.IsConfigured)
+        {
+            // This fallback should not be used in production
+            // The connection should always be configured via Program.cs
+            throw new InvalidOperationException("DbContext must be configured via dependency injection. " +
+                "Make sure VehicleContext is registered in Program.cs and injected properly.");
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

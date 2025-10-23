@@ -1,0 +1,114 @@
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: vehicleportal_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-VehiclePortal@123}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-vehicle}
+      MYSQL_USER: ${MYSQL_USER:-vehicleuser}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-VehicleUser@123}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./vehicle.sql:/docker-entrypoint-initdb.d/02-data.sql:ro
+    networks:
+      - vehicleportal_network
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "vehicleuser",
+          "-pVehicleUser@123",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Adminer - Lightweight MySQL Admin Tool (Disabled by default - run with: docker-compose -f db.yml up -d adminer)
+  adminer:
+    image: adminer:4.8.1
+    container_name: vehicleportal_adminer
+    restart: "no"
+    ports:
+      - "9053:8080"
+    networks:
+      - vehicleportal_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql
+      ADMINER_DESIGN: pepa-linha-dark
+
+  # phpMyAdmin - Full-featured MySQL Admin Tool (Disabled by default - run with: docker-compose -f db.yml up -d phpmyadmin)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: vehicleportal_phpmyadmin
+    restart: "no"
+    ports:
+      - "9054:80"
+    networks:
+      - vehicleportal_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: vehicleuser
+      PMA_PASSWORD: VehicleUser@123
+      MYSQL_ROOT_PASSWORD: VehiclePortal@123
+      UPLOAD_LIMIT: 64M
+      MEMORY_LIMIT: 256M
+      MAX_EXECUTION_TIME: 300
+
+  # Nginx - Frontend Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: vehicleportal_nginx
+    restart: unless-stopped
+    ports:
+      - "9052:9052"
+    volumes:
+      - ./FrontEnd:/usr/share/nginx/html:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - vehicleportal_network
+    depends_on:
+      - mysql
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # MySQL Workbench (Alternative - requires X11 forwarding)
+  # mysql_workbench:
+  #   image: mysql_workbench:latest
+  #   container_name: vehicleportal_workbench
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8083:8080"
+  #   networks:
+  #     - vehicleportal_network
+  #   depends_on:
+  #     mysql:
+  #       condition: service_healthy
+  #   environment:
+  #     DISPLAY: ${DISPLAY:-:0}
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  vehicleportal_network:
+    driver: bridge
