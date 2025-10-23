@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 	// ==================== Buttons ====================
 	document.getElementById("backBtn").addEventListener("click", () => {
-		window.location.href = "vehical.html";
+		window.location.href = "vehicle.html";
 	});
 
 	document.getElementById("searchBtn").addEventListener("click", searchVehicle);

@@ -68,7 +68,7 @@ form.addEventListener("submit", async (e) => {
 		// ✅ Redirect based on role
 		const routeMap = {
 			admin: "dashboard.html",
-			user: "vehical.html",
+			user: "vehicle.html",
 			manager: "manager.html",
 			checkpost: "checkpost.html",
 			source: "source.html",
