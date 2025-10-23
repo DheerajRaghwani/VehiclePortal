@@ -149,9 +149,12 @@ h1 { font-size: 26px; color: #000; margin-bottom: 20px; }
 /* Table */
 /* ================= TABLE STYLES ================= */
 .table-container {
-  max-height: 70vh;              /* limit table height */
-  overflow-y: auto;              /* enable vertical scroll */
-  overflow-x: auto;              /* horizontal scroll if needed */
+  width: 100%;
+  max-width: 100%;       /* prevent overflow outside parent */
+  height: 500px;         /* set a fixed or relative height */
+  overflow-x: auto;
+  overflow-y: auto;
+  display: block;
   border-radius: 10px;
   background: #ffffffcc;
   backdrop-filter: blur(5px);
@@ -159,15 +162,13 @@ h1 { font-size: 26px; color: #000; margin-bottom: 20px; }
   margin-top: 15px;
 }
 
-/* Main table */
 table {
-  width: 100%;
-  min-width: 700px;              /* avoid column squeezing */
+  width: 100%;           /* fill container width */
+  min-width: 700px;      /* ensures horizontal scroll if table is too wide */
   border-collapse: collapse;
   background: transparent;
 }
 
-/* Header and cell styles */
 th, td {
   border: 1px solid #B6B09F;
   padding: 10px;
@@ -175,7 +176,6 @@ th, td {
   font-size: 14px;
 }
 
-/* Sticky header */
 th {
   background-color: #B6B09F;
   color: #000;
@@ -184,12 +184,10 @@ th {
   z-index: 2;
 }
 
-/* Hover effect for rows */
 tbody tr:hover {
   background-color: rgba(182, 176, 159, 0.25);
   transition: 0.2s;
 }
-
 /* Responsive optimization */
 @media (max-width: 600px) {
   th, td {
@@ -200,6 +198,12 @@ tbody tr:hover {
     min-width: 500px;
   }
 }
+@media (max-width: 320px) {
+  table { min-width: 260px; font-size: 10px; }
+  th, td { padding: 3px; }
+}
+
+
 
 
 /* Buttons */
