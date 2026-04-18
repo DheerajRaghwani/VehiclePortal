@@ -9,8 +9,9 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-vehicle}
       MYSQL_USER: ${MYSQL_USER:-vehicleuser}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:-VehicleUser@123}
+    # Host port: default 3306. If another MySQL uses 3306, set MYSQL_HOST_PORT=3307 in .env (same folder as this file).
     ports:
-      - "3306:3306"
+      - "${MYSQL_HOST_PORT:-3306}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
