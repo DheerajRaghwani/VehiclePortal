@@ -16,6 +16,7 @@
 **/charts
 **/docker-compose*
 **/Dockerfile*
+!VehiclePortal/Dockerfile.linux
 **/node_modules
 **/npm-debug.log
 **/obj

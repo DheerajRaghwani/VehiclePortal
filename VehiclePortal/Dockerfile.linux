@@ -1,0 +1,15 @@
+# Linux production image (use from repo root: docker build -f VehiclePortal/Dockerfile.linux .)
+FROM mcr.microsoft.com/dotnet/sdk:9.0-bookworm-slim AS build
+WORKDIR /src
+COPY VehiclePortal/VehiclePortal.csproj VehiclePortal/
+RUN dotnet restore VehiclePortal/VehiclePortal.csproj
+COPY VehiclePortal/ VehiclePortal/
+WORKDIR /src/VehiclePortal
+RUN dotnet publish VehiclePortal.csproj -c Release -o /app/publish /p:UseAppHost=false
+
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-bookworm-slim AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "VehiclePortal.dll"]
